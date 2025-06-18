@@ -11,4 +11,8 @@
     {{ $content = htmlUnescape $content }}
 {{ end }}
 
-<div class="paige-shortcode-code">{{ highlight $content $lang $options }}</div>
+
+<div style="display: flex; justify-content: center; margin: 20px 0;">
+    <div class="paige-code" style="max-width: 100%; text-align: left;">{{ highlight $content $lang $options }}</div>
+</div>
+
