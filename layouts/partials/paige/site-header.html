@@ -116,7 +116,8 @@
                         {{ $active := eq $page.Section "" }}
 
                         <li class="nav-item">
-                            <a {{ if $active }} aria-current="page" {{ end }} class="{{ if $active }} active {{ if $links }} fw-bold text-body {{ end }} {{ end }} nav-link {{ if $links }} text-decoration-underline {{ end }}" href="{{ relLangURL `` }}">{{ i18n "paige_home" }}</a>
+                        <!-- <a {{ if $active }} aria-current="page" {{ end }} class="{{ if $active }} active {{ if $links }} fw-bold text-body {{ end }} {{ end }} nav-link {{ if $links }} text-decoration-underline {{ end }}" href="{{ relLangURL `` }}">{{ i18n "paige_home" }}</a> -->
+                        <a {{ if $active }} aria-current="page" {{ end }} style="font-size: 24px;" class="{{ if $active }} active {{ if $links }} fw-bold text-body-empasis {{ end }} {{ end }} nav-link {{ if $links }} {{ end }}" href="{{ relLangURL `` }}">{{ i18n "paige_home" }}</a>
                         </li>
 
                         {{ range $pages }}
@@ -129,7 +130,9 @@
                             {{ $active := or $home $menu $section }}
 
                             <li class="nav-item">
-                                <a {{ if $active }} aria-current="page" {{ end }} class="{{ if $active }} active {{ if $links }} fw-bold text-body {{ end }} {{ end }} nav-link {{ if $links }} text-decoration-underline {{ end }}" href="{{ .RelPermalink }}" {{ with partial "paige/func-target.html" (dict "page" $page "url" .RelPermalink) }} target="{{ . }}" {{ end }}>{{ .LinkTitle }}</a>
+                                <!-- <a {{ if $active }} aria-current="page" {{ end }} class="{{ if $active }} active {{ if $links }} fw-bold text-body {{ end }} {{ end }} nav-link {{ if $links }} text-decoration-underline {{ end }}" href="{{ .RelPermalink }}" {{ with partial "paige/func-target.html" (dict "page" $page "url" .RelPermalink) }} target="{{ . }}" {{ end }}>{{ .LinkTitle }}</a> -->
+                                <a {{ if $active }} aria-current="page" {{ end }}  style="font-size: 24px;" class="{{ if $active }} active {{ if $links }} fw-bold text-body-empasis {{ end }} {{ end }} nav-link {{ if $links }} text-decoration {{ end }}" href="{{ .RelPermalink }}" {{ with partial "paige/func-target.html" (dict "page" $page "url" .RelPermalink) }} target="{{ . }}" {{ end }}>{{ .LinkTitle }}</a>
+
                             </li>
                         {{ end }}
                     </ul>
