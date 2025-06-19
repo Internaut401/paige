@@ -91,27 +91,7 @@
     </div>
 {{ end }}
 
-{{ with $sections }}
-    <div id="paige-page-sections">
-        {{ if or $collections $pages }}
-            <h2 class="h5 text-center" id="paige-page-sections-header">{{ i18n "paige_sections" }}</h2>
-        {{ end }}
 
-        {{ if $pages }}
-            {{ range . }}
-                {{ partial "paige/list-item.html" (dict "item" . "list" $page) }}
-            {{ end }}
-        {{ else }}
-            {{ $pager := $page.Paginate . }}
-
-            {{ range $pager.Pages }}
-                {{ partial "paige/list-item.html" (dict "item" . "list" $page) }}
-            {{ end }}
-
-            {{ template "pagination" (dict "page" $page "pager" $pager) }}
-        {{ end }}
-    </div>
-{{ end }}
 
 {{ with $pages }}
     <div id="paige-page-pages">
