@@ -12,15 +12,17 @@
 {{ $style := cond hugo.IsProduction "compressed" "" }}
 {{ $template := $params.template }}
 
-{{ $resource := partial "paige/func-resource.html" (dict "page" $page "url" $href) }}
-
 {{ if not $href }}
     {{ errorf "layouts/partials/paige/tag-link.html: no href" }}
 {{ end }}
 
+{{ $resource := partial "paige/func-resource.html" (dict "page" $page "url" $href) }}
+
 {{ if $resource }}
     {{ if $template }}
-        {{ $dir := path.Dir $resource.RelPermalink }}
+        {{ $base := (urls.Parse site.BaseURL).Path }}
+
+        {{ $dir := path.Dir $resource.RelPermalink | strings.TrimPrefix $base }}
         {{ $ext := path.Ext $resource.RelPermalink }}
         {{ $hash := printf "%v%s" $context $resource.Content | sha1 }}
         {{ $name := path.BaseName $resource.RelPermalink }}
@@ -33,7 +35,7 @@
     {{ if $sass }}
         {{/* TODO: Remove the silenceDeprecations option when Bootstrap is updated beyond v5.3.3. */}}
 
-        {{ $resource = $resource | toCSS (dict "enableSourceMap" $map "includePaths" $paths "outputStyle" $style "silenceDeprecations" (slice "color-functions" "global-builtin" "import" "mixed-decls") "transpiler" "dartsass") }}
+        {{ $resource = $resource | toCSS (dict "enableSourceMap" $map "includePaths" $paths "outputStyle" $style "silenceDeprecations" (slice "color-functions" "global-builtin" "import") "transpiler" "dartsass") }}
     {{ end }}
 
     {{ $resource = $resource | minify | fingerprint }}

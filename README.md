@@ -103,10 +103,10 @@ please share it by [posting a link](https://github.com/willfaught/paige/discussi
     For Snap on Linux:
 
     ```sh
-    $ sudo snap install hugo
+    $ sudo snap install dart-sass hugo
     ```
 
-    Hugo must be the extended version, and at least version v0.141.0.
+    Hugo must be the extended version, and at least version 0.141.0.
 
 2. Create a site:
 
@@ -124,6 +124,7 @@ please share it by [posting a link](https://github.com/willfaught/paige/discussi
 4. Configure your module:
 
     ```sh
+    $ sh
     $ cd yoursite
     $ hugo mod init github.com/youraccount/yoursite
     $ cat >>hugo.toml <<EOF
@@ -136,6 +137,7 @@ please share it by [posting a link](https://github.com/willfaught/paige/discussi
 5. Configure the Paige module:
 
     ```sh
+    $ sh
     $ cd yoursite
     $ hugo mod get github.com/willfaught/paige@latest
     $ cat >>hugo.toml <<EOF
@@ -260,6 +262,11 @@ disable_word_count = false
 
 # Presentation
 full_width = false # Whether the page body fills the page width
+maximize_heading_levels = false # Whether to shift heading levels higher as much as possible
+maximum_heading_level = 6 # The maximum heading level to shift heading levels to
+minimize_heading_levels = false # Whether to shift heading levels lower as much as possible
+minimum_heading_level = 2 # The minimum heading level to shift heading levels to
+normalize_heading_levels = false # Whether to shift heading levels higher to fill heading level gaps
 
 # Schema
 base_schema = {} # JSON-LD schema that all page schemas override
@@ -1125,9 +1132,3 @@ disable_sections = true
 
 - Photos by [Lanty](https://unsplash.com/@photos_by_lanty)
 - Photo by [Sergey Pesterev](https://unsplash.com/photos/JV78PVf3gGI)
-
-## Project
-
-Copyright 2022 [Will Faught](https://willfaught.com).
-Licensed under the [EUPL](https://spdx.org/licenses/EUPL-1.2.html).
-Hosted at https://github.com/willfaught/paige.
