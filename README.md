@@ -171,6 +171,7 @@ Paige uses [Semantic Versioning](https://semver.org).
 The current major version is 0.
 From time to time, breaking changes are made.
 When you update Paige, you must test your site.
+See CHANGES.md for details.
 
 See Hugo's [installation](https://gohugo.io/installation/),
 [getting started](https://gohugo.io/getting-started/),
@@ -194,10 +195,10 @@ See the [menu navigation only](#menu-navigation-only) section for how to do that
 
 To change the favicon, see the [override](#override) section.
 
-To add analytics, put the code in `yoursite/layouts/partials/paige/site-last.html`.
+To add analytics, put the code in `yoursite/layouts/_partials/paige/site-last.html`.
 See the [include](#include) section.
 
-To add comments, put the code in `yoursite/layouts/partials/paige/page-body-last-page.html`.
+To add comments, put the code in `yoursite/layouts/_partials/paige/page-body-last-page.html`.
 See the [include](#include) section.
 
 ## Configure
@@ -392,8 +393,7 @@ The assigned values shown are the default values unless otherwise specified.
 ### Menu
 
 The menu can be configured using the `main` menu.
-The active menu item has a URL that is a prefix of the path of the current page.
-A menu item with the URL `/` only matches a `/` path.
+The active menu item has a page path that is a prefix of the path of the current page.
 
 If you intend for the menu to be sufficient for all navigation,
 see [how to hide other navigation features](#menu-navigation-only).
@@ -433,29 +433,29 @@ if the non-property attributes are specified in `paige.pages.microdata`.
 
 ### Cloud
 
-The `paige/cloud` layout provides a link cloud for subpages.
+The `paige-cloud` layout provides a link cloud for subpages.
 
 Example configuration in `yoursite/content/tags/_index.md`:
 
 ```toml
-layout = "paige/cloud"
+layout = "paige-cloud"
 ```
 
 ### Search
 
-The `paige/search` layout provides a search page.
+The `paige-search` layout provides a search page.
 
 Example configuration in `yoursite/hugo.toml`:
 
 ```toml
 [outputs]
-home = ["atom", "html", "paige-search", "rss"]
+home = ["html", "paige-search"]
 ```
 
 Example configuration in `yoursite/content/search.md`:
 
 ```toml
-layout = "paige/search"
+layout = "paige-search"
 title = "Search"
 ```
 
@@ -804,34 +804,34 @@ Files can be included in many places in HTML.
 
 | If this file exists in your site                | It is included at                |
 | ------------------------------------------------| ---------------------------------|
-| `layouts/partials/paige/body-first.html`        | The beginning of the body        |
-| `layouts/partials/paige/body-last.html`         | The ending of the body           |
-| `layouts/partials/paige/head-first.html`        | The beginning of the head        |
-| `layouts/partials/paige/head-last.html`         | The ending of the head           |
-| `layouts/partials/paige/page-body-first.html`   | The beginning of the page body   |
-| `layouts/partials/paige/page-body-last.html`    | The ending of the page body      |
-| `layouts/partials/paige/page-first.html`        | The beginning of the page        |
-| `layouts/partials/paige/page-footer-first.html` | The beginning of the page footer |
-| `layouts/partials/paige/page-footer-last.html`  | The ending of the page footer    |
-| `layouts/partials/paige/page-header-first.html` | The beginning of the page header |
-| `layouts/partials/paige/page-header-last.html`  | The ending of the page header    |
-| `layouts/partials/paige/page-last.html`         | The ending of the page           |
-| `layouts/partials/paige/site-first.html`        | The beginning of the site        |
-| `layouts/partials/paige/site-footer-first.html` | The beginning of the site footer |
-| `layouts/partials/paige/site-footer-last.html`  | The ending of the site footer    |
-| `layouts/partials/paige/site-header-first.html` | The beginning of the site header |
-| `layouts/partials/paige/site-header-last.html`  | The ending of the site header    |
-| `layouts/partials/paige/site-last.html`         | The ending of the site           |
+| `layouts/_partials/paige/body-first.html`        | The beginning of the body        |
+| `layouts/_partials/paige/body-last.html`         | The ending of the body           |
+| `layouts/_partials/paige/head-first.html`        | The beginning of the head        |
+| `layouts/_partials/paige/head-last.html`         | The ending of the head           |
+| `layouts/_partials/paige/page-body-first.html`   | The beginning of the page body   |
+| `layouts/_partials/paige/page-body-last.html`    | The ending of the page body      |
+| `layouts/_partials/paige/page-first.html`        | The beginning of the page        |
+| `layouts/_partials/paige/page-footer-first.html` | The beginning of the page footer |
+| `layouts/_partials/paige/page-footer-last.html`  | The ending of the page footer    |
+| `layouts/_partials/paige/page-header-first.html` | The beginning of the page header |
+| `layouts/_partials/paige/page-header-last.html`  | The ending of the page header    |
+| `layouts/_partials/paige/page-last.html`         | The ending of the page           |
+| `layouts/_partials/paige/site-first.html`        | The beginning of the site        |
+| `layouts/_partials/paige/site-footer-first.html` | The beginning of the site footer |
+| `layouts/_partials/paige/site-footer-last.html`  | The ending of the site footer    |
+| `layouts/_partials/paige/site-header-first.html` | The beginning of the site header |
+| `layouts/_partials/paige/site-header-last.html`  | The ending of the site header    |
+| `layouts/_partials/paige/site-last.html`         | The ending of the site           |
 
 There are kind variants of include files that are included only when the file kind matches the page kind.
 
 | If this file exists in your site               | It is included when         |
 | -----------------------------------------------| ----------------------------|
-| `layouts/partials/paige/[PLACE]-home.html`     | The page kind is "home"     |
-| `layouts/partials/paige/[PLACE]-page.html`     | The page kind is "page"     |
-| `layouts/partials/paige/[PLACE]-section.html`  | The page kind is "section"  |
-| `layouts/partials/paige/[PLACE]-taxonomy.html` | The page kind is "taxonomy" |
-| `layouts/partials/paige/[PLACE]-term.html`     | The page kind is "term"     |
+| `layouts/_partials/paige/[PLACE]-home.html`     | The page kind is "home"     |
+| `layouts/_partials/paige/[PLACE]-page.html`     | The page kind is "page"     |
+| `layouts/_partials/paige/[PLACE]-section.html`  | The page kind is "section"  |
+| `layouts/_partials/paige/[PLACE]-taxonomy.html` | The page kind is "taxonomy" |
+| `layouts/_partials/paige/[PLACE]-term.html`     | The page kind is "term"     |
 
 Above, the place placeholder must be "body-first", "body-last", "head-first", etc.
 
@@ -866,8 +866,8 @@ You can generate these favicon files [here](https://realfavicongenerator.net).
 
 To change the syntax highlighting styles, override these files [with your own](https://gohugo.io/content-management/syntax-highlighting/#generate-syntax-highlighter-css):
 
-- `layouts/partials/paige/dark.css`
-- `layouts/partials/paige/light.css`
+- `layouts/_partials/paige/dark.css`
+- `layouts/_partials/paige/light.css`
 
 ### Extend
 

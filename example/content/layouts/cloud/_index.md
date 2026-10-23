@@ -2,19 +2,19 @@
 authors = ["author-demo"]
 categories = ["layouts", "paige"]
 description = "Demonstration of the cloud layout."
-layout = "paige/cloud"
+layout = "paige-cloud"
 tags = ["cloud"]
 title = "Cloud"
 +++
 
-The `paige/cloud` layout displays list page links as a link cloud.
+The `paige-cloud` layout displays list page links as a link cloud.
 
 <!--more-->
 
-This page has the following parameters:
+Example configuration in `yoursite/content/tags/_index.md`:
 
-```yaml
-layout: "paige/cloud"
+```toml
+layout = "paige-cloud"
 ```
 
 Result:
